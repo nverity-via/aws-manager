@@ -1,0 +1,10 @@
+#!/bin/bash
+source /home/nick/Git/dyn-menu/venv/bin/activate
+cd /home/nick/Git/DevSetup/dyn-menu
+touch temp
+rm temp
+python menu.py PH "${@:1}"
+touch temp
+chmod +x temp
+. ./temp
+rm temp
