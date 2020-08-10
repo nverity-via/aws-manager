@@ -1,8 +1,8 @@
 #!/bin/bash
-cd pathtothisdirectory
+cd /home/nick/Git/AWSManager
 touch temp
 rm temp
-python menu.py pathtothisdirectory/aws.csv "${@:1}"
+python3 menu.py /home/nick/Git/AWSManager/aws.csv "${@:1}"
 touch temp
 chmod +x temp
 . ./temp

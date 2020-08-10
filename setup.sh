@@ -1,33 +1,22 @@
 #!/usr/bin/env bash
 
-cat aws
-
 cp aws aws.old
 
-# TODO this
-sed -i 's/pathtothisdirectory/'$(pwd)'/g' aws
+echo "Updating aws script"
 
-
-exit 0
+dir=$(pwd)
+sed -i --expression "s@pathtothisdirectory@$dir@" aws
 
 # update ~/.bashrc
 bash_rc=~/.bashrc
 
+ALIASCMD="alias awss='$dir/aws'"
+
 echo "Making a backup of $bash_rc"
 cp $bash_rc ~/.bashrc.backup
 
-function update_bashrc() {
+echo "
+" >> $bash_rc
+echo $ALIASCMD >> $bash_rc
 
-cat <<EOT >> $1
-
-alias gp='git push && gitActionsStatus'
-EOT
-
-}
-
-update_bashrc $bash_rc
-
-
-exit 0
-
-
+echo "bashrc updated with 'awss' command"

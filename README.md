@@ -9,11 +9,12 @@ This program allows profile management that will control what the default runs, 
 On Linux and MacOS, make sure python3 is installed
 
 On Windows, the curses library for python3 needs to be installed
+- The simple way to do this is use WSL (Windows Subsystem for Linux)
 
 
 #### Installing
 
-Run `setup.sh` to do auto/guided setup
+Run `setup.sh` to add the `awss` command and update the aws script for local install
 
 
 Or, modify the file `aws` to have correct path and add the line
@@ -130,7 +131,7 @@ See the setup/csv section for more details
 
 ### Running
 
-Run with the command chosen during setup (default `awss`)
+Run with the command `awss` to open the menu
 
 First select the environment you want, then run the command again and activate the same environment
 
