@@ -1,0 +1,9 @@
+#!/bin/bash
+cd pathtothisdirectory
+touch temp
+rm temp
+python menu.py pathtothisdirectory/aws.csv "${@:1}"
+touch temp
+chmod +x temp
+. ./temp
+rm temp
