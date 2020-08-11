@@ -1,0 +1,104 @@
+#!/usr/bin/env bash
+
+read -p "Enter a name for the aws environment to add: " name
+
+csv="pathtothisdirectory/aws.csv"
+
+
+function ensure_no_blank_lines {
+ sed '/^$/d' $1 > /dev/null
+}
+
+function add_to_csv {
+  line="$1 $2, $3"
+  echo $line >> $csv
+  ensure_no_blank_lines $csv
+}
+
+function copy_env {
+cp -r ~/.aws ~/.aws_$1
+}
+
+function make_env_activation_line {
+  IFS= read -r -p "Enter the command that is used to activate the environment: " cmd
+  cmd=$(echo "$cmd")
+  title="Activate $1"
+  line=$(echo $title", " $cmd)
+  echo $line >> $csv
+  ensure_no_blank_lines $csv
+}
+
+function make_fold_env_no_activate {
+read -p "Is the environment the current ~/.aws default one? (y/n): " is_default
+case "$is_default" in
+  y|Y ) echo "Copying environment into ~/.aws_$name" && copy_env $name && add_to_csv "Select" $name "pathtothisdirectory/copy_dir_to_dot_aws /home/nick/.aws_$name";;
+  n|N ) echo "Please make the current default ~/.aws profile, the environment you want to add" && exit 0;;
+  * ) echo "Must be y/n answer" && exit 0;;
+esac
+}
+
+function make_fold_env_activate {
+read -p "Is the environment the current ~/.aws default one? (y/n): " is_default
+case "$is_default" in
+  y|Y ) echo "Copying environment into ~/.aws_$name" && copy_env $name && add_to_csv "Select" $name "pathtothisdirectory/copy_dir_to_dot_aws /home/nick/.aws_$name" && make_env_activation_line $name;;
+  n|N ) echo "Please make the current default ~/.aws profile, the environment you want to add" && exit 0;;
+  * ) echo "Must be y/n answer" && exit 0;;
+esac
+}
+
+
+function make_folder_env {
+read -p $'Does the environment need a command to activate it? (y/n)\nex: if you need to run aws sts get-session-token it does need activation\n: ' needs_activation
+case "$needs_activation" in
+  y|Y ) make_fold_env_activate ;;
+  n|N ) make_fold_env_no_activate ;;
+  * ) echo "Must be y/n answer" && exit 0;;
+esac
+}
+
+function make_cmd_env_no_activate {
+  IFS= read -r -p "Enter the command that is used to create the environment: " cmd
+  cmd=$(echo "$cmd")
+  title="Select $1"
+  line=$(echo $title", " $cmd)
+  echo $line >> $csv
+  ensure_no_blank_lines $csv
+}
+
+function make_cmd_env_activate {
+  IFS= read -r -p "Enter the command that is used to create the environment: " cmd
+  cmd=$(echo "$cmd")
+  title="Select $1"
+  line=$(echo $title", " $cmd)
+  echo $line >> $csv
+  ensure_no_blank_lines $csv
+
+  IFS= read -r -p "Enter the command that is used to activate the environment: " cmd
+  cmd=$(echo "$cmd")
+  title="Activate $1"
+  line=$(echo $title", " $cmd)
+  echo $line >> $csv
+  ensure_no_blank_lines $csv
+}
+
+function make_cmd_env {
+read -p $'Will the environment need a command to activate it? (y/n)\nex: if you need to run aws sts get-session-token it does need activation\n: ' needs_activation
+case "$needs_activation" in
+  y|Y ) make_cmd_env_activate $name;;
+  n|N ) make_cmd_env_no_activate $name;;
+  * ) echo "Must be y/n answer" && exit 0;;
+esac
+}
+
+function type_of_env {
+read -p $'Is the environment created from a command? (y/n)\nIf it is created by a docker or script command, then select yes (y)\nIf its a normal aws profile, then select no (n)\n: ' is_folder
+case "$is_folder" in
+  y|Y ) make_cmd_env;;
+  n|N ) make_folder_env;;
+  * ) echo "Must be y/n answer" && exit 0;;
+esac
+}
+
+type_of_env
+
+echo "Added $name"

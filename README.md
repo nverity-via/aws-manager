@@ -124,10 +124,19 @@ The included `aws.csv` has the same "Verify ID" line as well as a template line 
 
 ### Adding Environments
 
-Simply add a new entry to the `aws.csv` file to add it to the options
+Either run the "Add new env" option in the `awss` menu and follow the prompts
 
-See the setup/csv section for more details
+This will ask... TODO
 
+Or manually add a new entry to the `aws.csv` file to add it to the options
+- Make sure to leave a blank line at the bottom of the file
+
+See the setup/csv section for more details on how the csv file is used
+
+### Removing Environments
+
+Open the `aws.csv` file and delete the line(s) for the environments you want to remove
+- Be sure not to leave any blank lines between entries
 
 ### Running
 

@@ -6,6 +6,8 @@ echo "Updating aws script"
 
 dir=$(pwd)
 sed -i --expression "s@pathtothisdirectory@$dir@" aws
+sed -i --expression "s@pathtothisdirectory@$dir@" aws.csv
+sed -i --expression "s@pathtothisdirectory@$dir@" add_env
 
 # update ~/.bashrc
 bash_rc=~/.bashrc
