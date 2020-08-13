@@ -126,7 +126,17 @@ The included `aws.csv` has the same "Verify ID" line as well as a template line 
 
 Either run the "Add new env" option in the `awss` menu and follow the prompts
 
-This will ask... TODO
+This will begin a series of prompts for the user to answer
+ - The name of the environment
+ - Whether the environment is created from a command or is a folder
+   - If created every time by command, then it will ask for the command
+     - The command can be pasted directly into the terminal
+   - If it is a pre-existing folder it will ask if it is the current active and default environment
+     - If it is not, it will instruct the user to make that the case
+ - Whether it needs a command to activate it
+   - The command can be pasted directly into the terminal
+
+
 
 Or manually add a new entry to the `aws.csv` file to add it to the options
 - Make sure to leave a blank line at the bottom of the file
