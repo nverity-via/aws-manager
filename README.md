@@ -122,6 +122,14 @@ The included `aws.csv` has the same "Verify ID" line as well as a template line 
 
 ## Usage
 
+### First Time Usage
+
+There will already be a SFL environment in the menu, this is only there as an example and its two lines can be deleted from the `aws.csv` file, or modified to fit your environment
+
+The simplest way is to remove the lines and add a new environment with the "Add new env" option in the menu
+
+
+
 ### Adding Environments
 
 Either run the "Add new env" option in the `awss` menu and follow the prompts
