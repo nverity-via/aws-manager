@@ -64,12 +64,12 @@ Here is an example `aws.csv` file to show the different parts
 
 ```csv
 Verify ID, aws sts get-caller-identity; aws s3 ls
-Select SFL,/home/nick/Git/DevSetup/copy_dir_to_dot_aws /home/nick/.aws_sfl
-Activate SFL,echo "run the command '. /home/nick/Git/DevSetup/aws_set'"
-Select CBS,/home/nick/Git/DevSetup/copy_dir_to_dot_aws /home/nick/.aws_cbs
+Select SFL,/home/nyx/Git/DevSetup/copy_dir_to_dot_aws /home/nyx/.aws_sfl
+Activate SFL,echo "run the command '. /home/nyx/Git/DevSetup/aws_set'"
+Select CBS,/home/nyx/Git/DevSetup/copy_dir_to_dot_aws /home/nyx/.aws_cbs
 Activate CBS,echo "Should not need activation"
 Select SDC,docker run -it --rm --net=host -e TZ=America/Chicago -v ~/.aws:/root/.aws ac0a9c401fd3
-Activate SDC,sed -i 's/default/olddefault/g' /home/nick/.aws/credentials; sed -i 's/sdc-mfg-dev:Developer/default/g' /home/nick/.aws/credentials;
+Activate SDC,sed -i 's/default/olddefault/g' /home/nyx/.aws/credentials; sed -i 's/sdc-mfg-dev:Developer/default/g' /home/nyx/.aws/credentials;
 ```
 
 And this is how it is displayed when ran
@@ -85,8 +85,8 @@ Verify ID, aws sts get-caller-identity; aws s3 ls
   
 The lines
 ```csv
-Select SFL,/home/nick/Git/DevSetup/copy_dir_to_dot_aws /home/nick/.aws_sfl
-Activate SFL,echo "run the command '. /home/nick/Git/DevSetup/aws_set'"
+Select SFL,/home/nyx/Git/DevSetup/copy_dir_to_dot_aws /home/nyx/.aws_sfl
+Activate SFL,echo "run the command '. /home/nyx/Git/DevSetup/aws_set'"
 ```
 - Shows the title "Select SFL"
   - The runs a script to copy the input directory `~/.aws_sfl` to overwrite the `~/.aws` directory
@@ -96,7 +96,7 @@ Activate SFL,echo "run the command '. /home/nick/Git/DevSetup/aws_set'"
 
 The lines
 ```csv
-Select CBS,/home/nick/Git/DevSetup/copy_dir_to_dot_aws /home/nick/.aws_cbs
+Select CBS,/home/nyx/Git/DevSetup/copy_dir_to_dot_aws /home/nyx/.aws_cbs
 Activate CBS,echo "Should not need activation"
 ```
 - Shows the title "Select CBS"
@@ -107,7 +107,7 @@ Activate CBS,echo "Should not need activation"
 The lines
 ```csv
 Select SDC,docker run -it --rm --net=host -e TZ=America/Chicago -v ~/.aws:/root/.aws ac0a9c401fd3
-Activate SDC,sed -i 's/default/olddefault/g' /home/nick/.aws/credentials; sed -i 's/sdc-mfg-dev:Developer/default/g' /home/nick/.aws/credentials;
+Activate SDC,sed -i 's/default/olddefault/g' /home/nyx/.aws/credentials; sed -i 's/sdc-mfg-dev:Developer/default/g' /home/nyx/.aws/credentials;
 ```
 - Shows the title "Select SDC"
   - The runs a docker container that modifies in place the `~.aws/credentials` file to add new profiles
@@ -170,6 +170,6 @@ First select the environment you want, then run the command again and activate t
   - Ex: The `a` key would select the item`[A]ctivate SFL` and the `c` key would select `A[c]tivate SFL` 
 
 
-Menu system is adapted from [here](https://github.com/nickssmith/dyn-menu) for more info
+Menu system is adapted from [here](https://github.com/nyxssmith/dyn-menu) for more info
 
 Brackets and numbers are added automatically

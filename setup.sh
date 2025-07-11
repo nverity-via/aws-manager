@@ -5,20 +5,20 @@ cp aws aws.old
 echo "Updating aws script"
 
 dir=$(pwd)
-sed -i --expression "s@pathtothisdirectory@$dir@" aws
-sed -i --expression "s@pathtothisdirectory@$dir@" aws.csv
-sed -i --expression "s@pathtothisdirectory@$dir@" add_env
+sed -i '' "s@pathtothisdirectory@$dir@" aws
+sed -i '' "s@pathtothisdirectory@$dir@" aws.csv
+sed -i '' "s@pathtothisdirectory@$dir@" add_env
 
-# update ~/.bashrc
-bash_rc=~/.bashrc
+# update ~/.zshrc
+zsh_rc=~/.zshrc
 
 ALIASCMD="alias awss='$dir/aws'"
 
-echo "Making a backup of $bash_rc"
-cp $bash_rc ~/.bashrc.backup
+echo "Making a backup of $zsh_rc"
+cp $zsh_rc ~/.zshrc.backup
 
 echo "
-" >> $bash_rc
-echo $ALIASCMD >> $bash_rc
+" >> $zsh_rc
+echo $ALIASCMD >> $zsh_rc
 
-echo "bashrc updated with 'awss' command"
+echo "~/.zshrc updated with 'awss' command"
