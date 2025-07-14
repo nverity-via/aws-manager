@@ -1,4 +1,2 @@
 Verify ID, aws sts get-caller-identity; aws s3 ls
-Add New AWS env,pathtothisdirectory/add_env
-Select SFL,/path/to/this/directory/copy_dir_to_dot_aws ~/.aws_sfl
-Activate SFL,sed -i 's/default/olddefault/g' ~/.aws/credentials; sed -i 's/NAME_OF_CONFIG_TO_BE_DEFAULT/default/g' ~/.aws/credentials;
+Add new AWS env,pathtothisdirectory/add_env
