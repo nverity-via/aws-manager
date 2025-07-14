@@ -31,7 +31,7 @@ function make_env_activation_line {
 function make_fold_env_no_activate {
 read -p "Is the environment the current ~/.aws default one? (y/n): " is_default
 case "$is_default" in
-  y|Y ) echo "Copying environment into ~/.aws_$name" && copy_env $name && add_to_csv "Select" $name "pathtothisdirectory/copy_dir_to_dot_aws ~/.aws_$name";;
+  y|Y ) echo "Copying environment into ~/.aws_$name" && copy_env $name && add_to_csv "Select" $name "/Users/nverity/Git/AWSManager/copy_dir_to_dot_aws ~/.aws_$name";;
   n|N ) echo "Please make the current default ~/.aws profile, the environment you want to add" && exit 0;;
   * ) echo "Must be y/n answer" && exit 0;;
 esac
@@ -40,7 +40,7 @@ esac
 function make_fold_env_activate {
 read -p "Is the environment the current ~/.aws default one? (y/n): " is_default
 case "$is_default" in
-  y|Y ) echo "Copying environment into ~/.aws_$name" && copy_env $name && add_to_csv "Select" $name "pathtothisdirectory/copy_dir_to_dot_aws ~/.aws_$name" && make_env_activation_line $name;;
+  y|Y ) echo "Copying environment into ~/.aws_$name" && copy_env $name && add_to_csv "Select" $name "/Users/nverity/Git/AWSManager/copy_dir_to_dot_aws ~/.aws_$name" && make_env_activation_line $name;;
   n|N ) echo "Please make the current default ~/.aws profile, the environment you want to add" && exit 0;;
   * ) echo "Must be y/n answer" && exit 0;;
 esac
@@ -48,7 +48,7 @@ esac
 
 
 function make_folder_env {
-read -p $'Does the environment need a command to activate it? (y/n)\nex: if you need to run aws sts get-session-token it does need activation\n: ' needs_activation
+read -p $'Does the environment need a command to activate it? (y/n): ' needs_activation
 case "$needs_activation" in
   y|Y ) make_fold_env_activate ;;
   n|N ) make_fold_env_no_activate ;;
@@ -82,7 +82,7 @@ function make_cmd_env_activate {
 }
 
 function make_cmd_env {
-read -p $'Will the environment need a command to activate it? (y/n)\nex: if you need to run aws sts get-session-token it does need activation\n: ' needs_activation
+read -p $'Will the environment need a command to activate it? (y/n): ' needs_activation
 case "$needs_activation" in
   y|Y ) make_cmd_env_activate $name;;
   n|N ) make_cmd_env_no_activate $name;;
