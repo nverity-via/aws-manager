@@ -1,6 +1,9 @@
 # AWS CLI default profile Manager
 ## Overview
 This program allows management of the AWS *default* profile
+
+![example screenshot](./menu_ex.png)
+
 ## Setup
 
 ### Installing 
