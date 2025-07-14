@@ -100,6 +100,14 @@ Follow these steps to add different AWS profiles for any environments that are n
 
 ## General Usage
 
+#### Selecting Item from Menu
+Items can be selected from the menu by
+- navagation using the arrow keys and pressing enter
+- pressing the number key for the selected item (1-9)
+- pressing the key on the keyboard for the item that has `[]` around it (ex: `S[e]lect ...` would be selected and ran by pressing `e`)
+
+
+#### Changing AWS Environments
 There are two steps for switching AWS CLI environments;
 
 **Selecting** the environment copies the environment over the `~/.aws` directory.
@@ -110,11 +118,6 @@ For example, the `/home/user/` directory would contain the folders `.aws`,`.aws_
 **Activating** the environment is the step where any 2FA comes in
 
 The activate command will be either the same or similar for all aws environments `aws sso login --sso-session aws-commercial` 
-
-Items can be selected from the menu by
-- navagation using the arrow keys and pressing enter
-- pressing the number key for the selected item (1-9)
-- pressing the key on the keyboard for the item that has `[]` around it (ex: `S[e]lect ...` would be selected and ran by pressing `e`)
 
 To **verify** the correct aws environment is selected, the first option of ` 1. [V]erify ID` will run both a `sts get-caller-identity` and `aws s3 ls` to give two possible recognizable outputs at a glance.
 
