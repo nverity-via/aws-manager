@@ -90,15 +90,5 @@ case "$needs_activation" in
 esac
 }
 
-function type_of_env {
-read -p $'Is the environment created from a command? (y/n)\nIf it is created by a docker or script command, then select yes (y)\nIf its a normal aws profile, then select no (n)\n: ' is_folder
-case "$is_folder" in
-  y|Y ) make_cmd_env;;
-  n|N ) make_folder_env;;
-  * ) echo "Must be y/n answer" && exit 0;;
-esac
-}
-
-type_of_env
-
+make_folder_env
 echo "Added $name"
