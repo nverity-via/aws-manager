@@ -9,12 +9,14 @@ This program allows management of the AWS *default* profile
 ### Installing 
 
 Running `./setup.sh` will
-- update the scripts in this directory to be the local installation
+- update the script configs in this directory function as the local installation of this tool
 - add the alias `awss` to your `~/.zshrc` file to bring up the menu
 
 ### AWS Environment Setup
 
 Follow the steps [here](https://docs.dev.platform-services.dev1.poweredbyvia.com/welcome/onboarding/aws/) for VIA aws cli access and validation
+
+**The following steps must be repeated for each AWS environment added**
 
 Open your `~/.aws/config` file, it should look like this after AWS setup
 ```
@@ -96,7 +98,7 @@ Now in the `awss` menu there will be a new items that look like:
 4. A[c]tivate new-profile-name
 ```
 
-Follow these steps to add different AWS profiles for any environments that are needed (dev, prod etc)
+Repeat these steps to add different AWS profiles for any environments that are needed (dev, prod etc)
 
 ## General Usage
 
@@ -113,7 +115,7 @@ There are two steps for switching AWS CLI environments;
 **Selecting** the environment copies the environment over the `~/.aws` directory.
 
 The format that environments are saved are as copies of the whole `~/.aws` directory.
-For example, the `/home/user/` directory would contain the folders `.aws`,`.aws_.aws_vianeer-dev`,`.aws_vianeer-prod`
+For example, the `/home/user/` directory would contain the folders `.aws`,`.aws_vianeer-dev`,`.aws_vianeer-prod`
 
 **Activating** the environment is the step where any 2FA comes in
 

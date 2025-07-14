@@ -1,5 +1,10 @@
 #!/bin/bash
-cd pathtothisdirectory
+if [ -d "pathtothisdirectory" ]; then
+    cd pathtothisdirectory
+else
+    echo "please run setup.sh"
+    exit 1
+fi
 touch temp
 rm temp
 python3 menu.py pathtothisdirectory/aws.csv "${@:1}"
