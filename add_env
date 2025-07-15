@@ -31,7 +31,7 @@ function make_env_activation_line {
 function make_fold_env_no_activate {
 read -p "Is the environment the current ~/.aws default one? (y/n): " is_default
 case "$is_default" in
-  y|Y ) echo "Copying environment into ~/.aws_$name" && copy_env $name && add_to_csv "Select" $name "/Users/nverity/Git/AWSManager/copy_dir_to_dot_aws ~/.aws_$name";;
+  y|Y ) echo "Copying environment into ~/.aws_$name" && copy_env $name && add_to_csv "Select" $name "pathtothisdirectory/copy_dir_to_dot_aws ~/.aws_$name";;
   n|N ) echo "Please make the current default ~/.aws profile, the environment you want to add" && exit 0;;
   * ) echo "Must be y/n answer" && exit 0;;
 esac
@@ -40,7 +40,7 @@ esac
 function make_fold_env_activate {
 read -p "Is the environment the current ~/.aws default one? (y/n): " is_default
 case "$is_default" in
-  y|Y ) echo "Copying environment into ~/.aws_$name" && copy_env $name && add_to_csv "Select" $name "/Users/nverity/Git/AWSManager/copy_dir_to_dot_aws ~/.aws_$name" && make_env_activation_line $name;;
+  y|Y ) echo "Copying environment into ~/.aws_$name" && copy_env $name && add_to_csv "Select" $name "pathtothisdirectory/copy_dir_to_dot_aws ~/.aws_$name" && make_env_activation_line $name;;
   n|N ) echo "Please make the current default ~/.aws profile, the environment you want to add" && exit 0;;
   * ) echo "Must be y/n answer" && exit 0;;
 esac
